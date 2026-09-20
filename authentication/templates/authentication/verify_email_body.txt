@@ -1,0 +1,9 @@
+Hi {{ user.username }},
+
+Welcome to LifeOS! Confirm this is your email address:
+
+{{ link }}
+
+This link expires in 3 days. If you didn't register, ignore this email.
+
+— The LifeOS Team

@@ -1,0 +1,237 @@
+{% extends 'authentication/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="sidebar-wrapper" id="sidebar">
+        <a href="{% url 'dashboard' %}" class="sidebar-brand">
+            <i class="bi bi-asterisk"></i>
+            <span>LifeOS</span>
+        </a>
+
+        <div class="flex-grow-1 overflow-y-auto">
+            <div class="sidebar-menu-section">
+                <div class="sidebar-menu-title">Menu</div>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">
+                        <a href="{% url 'dashboard' %}" class="sidebar-menu-link" title="Overview">
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-menu-section">
+                <div class="sidebar-menu-title">Components</div>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Basic Tables">
+                            <i class="bi bi-table"></i>
+                            <span>Basic Tables</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Forms and Input">
+                            <i class="bi bi-input-cursor-text"></i>
+                            <span>Forms & Input</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Buttons">
+                            <i class="bi bi-menu-button-wide-fill"></i>
+                            <span>Buttons & Alerts</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-menu-section">
+                <div class="sidebar-menu-title">Pages</div>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Blank Page">
+                            <i class="bi bi-file-earmark"></i>
+                            <span>Blank Page</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="{% url 'auth-login' %}" class="sidebar-menu-link" title="Login Page">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>Login Screen</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="404 Page">
+                            <i class="bi bi-slash-circle"></i>
+                            <span>Error 404</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-profile">
+            <div class="sidebar-profile-img profile-avatar">{{ user.username|default:'Administrator'|first|upper }}</div>
+            <div class="sidebar-profile-info">
+                <div class="sidebar-profile-name">{{ user.username|default:'Administrator' }}</div>
+                <div class="sidebar-profile-email">{{ user.email|default:'admin@email.com' }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <header class="navbar-custom">
+            <div class="navbar-left">
+                <button class="btn-desktop-toggle d-none d-xl-flex align-items-center justify-content-center me-3" id="desktop-sidebar-toggle" aria-label="Minimize Sidebar">
+                    <i class="bi bi-chevron-bar-left"></i>
+                </button>
+                <button class="sidebar-toggle-btn me-2" id="sidebar-toggle" aria-label="Toggle Navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div class="dropdown ms-2">
+                    <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-plus-lg"></i>
+                        <span>Create</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-quick-action">
+                        <li class="dropdown-header">Quick Action Shortcuts</li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> New Invoice</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i> New User</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> New Product</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> System Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="navbar-search-wrapper">
+                <input type="text" class="navbar-search-input" placeholder="Search anything in LifeOS...">
+                <button class="navbar-search-btn" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+            <div class="navbar-actions">
+                <button class="navbar-action-btn me-1" aria-label="Toggle Fullscreen" id="btn-fullscreen">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="navbar-action-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        <i class="bi bi-bell"></i>
+                        <span class="navbar-action-badge"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-notification p-0">
+                        <div class="notification-header">
+                            <h6 class="notification-title">Notifications</h6>
+                            <button class="btn-clear-all" type="button">Mark all read</button>
+                        </div>
+                        <div class="notification-list">
+                            <a href="#" class="notification-item">
+                                <div class="notification-icon bg-success text-white">
+                                    <i class="bi bi-wallet2"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">New sale received: <strong>$150.00</strong></p>
+                                    <span class="notification-time">2 mins ago</span>
+                                </div>
+                                <span class="notification-unread-dot"></span>
+                            </a>
+                            <a href="#" class="notification-item">
+                                <div class="notification-icon bg-primary text-white">
+                                    <i class="bi bi-person-plus-fill"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">New user registered: <strong>John Doe</strong></p>
+                                    <span class="notification-time">1 hour ago</span>
+                                </div>
+                                <span class="notification-unread-dot"></span>
+                            </a>
+                            <a href="#" class="notification-item">
+                                <div class="notification-icon bg-warning text-dark">
+                                    <i class="bi bi-box-seam-fill"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Stock running low: <strong>Hoodie</strong></p>
+                                    <span class="notification-time">3 hours ago</span>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="#" class="notification-footer">View All Notifications</a>
+                    </div>
+                </div>
+
+                <div class="dropdown ms-2">
+                    <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="navbar-profile-img profile-avatar">{{ user.username|default:'Administrator'|first|upper }}</div>
+                        <span class="navbar-profile-name d-none d-md-inline">{{ user.username|default:'Administrator' }}</span>
+                        <i class="bi bi-chevron-down navbar-profile-caret"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile">
+                        <li class="dropdown-header">Welcome !</li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Account</a></li>
+                        <li><a class="dropdown-item" href="{% url 'settings' %}"><i class="bi bi-gear"></i> Settings</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'auth-login' %}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Deactivate Account</h1>
+                <p class="page-subtitle">We're sorry to see you go. Please confirm below.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card mb-0">
+                    <div class="card-header">
+                        <h2 class="card-title">Before you go</h2>
+                    </div>
+                    <p class="text-muted-green">Deactivating your account means:</p>
+                    <ul class="text-muted-green">
+                        <li>You will be logged out immediately and won't be able to log back in.</li>
+                        <li>Your account and data will be permanently deleted after 7 days.</li>
+                        <li>You can reactivate any time before then from the link we'll email you.</li>
+                    </ul>
+                    <form method="POST" action="{% url 'deactivate-account' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-login-danger">
+                            <span>Yes, Deactivate My Account</span>
+                            <i class="bi bi-exclamation-triangle"></i>
+                        </button>
+                    </form>
+                    <p class="login-footer-text mt-3">
+                        Changed your mind? <a href="{% url 'settings' %}">Keep My Account</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-custom">
+            <div class="footer-left">
+                <span class="footer-logo">
+                    <i class="bi bi-asterisk"></i> LifeOS
+                </span>
+                <span class="footer-separator">|</span>
+                <span class="footer-copy">&copy; 2026 LifeOS</span>
+            </div>
+            <div class="footer-right">
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Overview</a></li>
+                    <li><a href="#" class="footer-link">Statistics</a></li>
+                    <li><a href="#" class="footer-link">Help & Documentation</a></li>
+                    <li><a href="#" class="footer-link">Status <span class="status-dot"></span></a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'dashboard/js/dashboard.js' %}"></script>
+{% endblock %}

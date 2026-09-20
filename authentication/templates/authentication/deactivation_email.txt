@@ -1,0 +1,11 @@
+Hi {{ user.username }},
+
+Your LifeOS account is now deactivated. It will be permanently deleted on {{ deadline|date:"F j, Y" }}.
+
+Changed your mind? Reactivate any time before then:
+{{ cancel_link }}
+
+— The LifeOS Team
+The |date:"F j, Y" filter turns the raw datetime into "September 27, 2026" — deadlines should read like a human wrote them.
+One wart to own: the bad-link branch reuses verify_failed.html, whose copy says "verification link" — slightly off-topic for cancellation. Fine as a placeholder; a dedicated cancel_failed.html is a 5-line copy of that file whenever you want it clean.
+That completes the set: model → deactivate → task → cancel → 3 emails. Want me to implement everything in order and test the full lifecycle (deactivate → email → cancel → reactivated, plus let-one-expire → deleted)?

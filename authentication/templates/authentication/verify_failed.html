@@ -1,0 +1,21 @@
+{% extends 'authentication/base.html' %}
+
+{% block content %}
+    <div class="login-wrapper">
+        <div class="login-bg-shape login-bg-shape-1"></div>
+        <div class="login-bg-shape login-bg-shape-2"></div>
+
+        <div class="login-card">
+            <a href="#" class="login-brand text-decoration-none">
+                <i class="bi bi-asterisk"></i>
+                <span>LifeOS</span>
+            </a>
+
+            <p class="login-subtitle">This verification link is invalid or has expired. Your account is still inactive.</p>
+
+            <p class="login-footer-text mt-3">
+                <a href="{% url 'auth-login' %}">Back to Login</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

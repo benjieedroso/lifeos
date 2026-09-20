@@ -1,0 +1,39 @@
+{% extends 'authentication/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="login-wrapper">
+        <div class="login-bg-shape login-bg-shape-1"></div>
+        <div class="login-bg-shape login-bg-shape-2"></div>
+
+        <div class="login-card">
+            <a href="#" class="login-brand text-decoration-none">
+                <i class="bi bi-asterisk"></i>
+                <span>LifeOS</span>
+            </a>
+
+            <p class="login-subtitle">Please sign in to access your dashboard.</p>
+
+            <form method="POST" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                
+                <div class="login-options">
+                    <label class="custom-control-label">
+                        <input type="checkbox" class="custom-checkbox-input" id="rememberMe">
+                        <span>Remember Me</span>
+                    </label>
+                    <a href="{% url 'password_reset' %}" class="forgot-password-link">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    <span>Sign In to Dashboard</span>
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </form>
+            <p class="login-footer-text mt-3">
+                Don't have an account? <a href="{% url 'auth-register' %}">Register Now</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

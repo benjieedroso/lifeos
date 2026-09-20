@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeOS - {{ page_title }}</title>
+
+    <link rel="icon" type="image/png" href="{% static 'authentication/assets/images/favicon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'authentication/assets/libs/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'authentication/assets/libs/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'authentication/assets/css/main.css' %}">
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'authentication/assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'authentication/assets/js/auth.js' %}"></script>
+    {% block extra_js %}
+    {% endblock %}
+</body>
+</html>
