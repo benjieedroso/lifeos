@@ -96,9 +96,9 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-quick-action">
                         <li class="dropdown-header">Quick Action Shortcuts</li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> New Invoice</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person-plus"></i> New User</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> New Product</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> New Task</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-plus"></i> New Event</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-journal-plus"></i> New Note</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> System Settings</a></li>
                     </ul>
@@ -129,30 +129,30 @@
                         <div class="notification-list">
                             <a href="#" class="notification-item">
                                 <div class="notification-icon bg-success text-white">
-                                    <i class="bi bi-wallet2"></i>
+                                    <i class="bi bi-check2-circle"></i>
                                 </div>
                                 <div class="notification-content">
-                                    <p class="notification-text">New sale received: <strong>$150.00</strong></p>
+                                    <p class="notification-text">Habit streak: <strong>6 days</strong> of morning runs</p>
                                     <span class="notification-time">2 mins ago</span>
                                 </div>
                                 <span class="notification-unread-dot"></span>
                             </a>
                             <a href="#" class="notification-item">
                                 <div class="notification-icon bg-primary text-white">
-                                    <i class="bi bi-person-plus-fill"></i>
+                                    <i class="bi bi-flag-fill"></i>
                                 </div>
                                 <div class="notification-content">
-                                    <p class="notification-text">New user registered: <strong>John Doe</strong></p>
+                                    <p class="notification-text">Goal milestone reached: <strong>Chapter 5 done</strong></p>
                                     <span class="notification-time">1 hour ago</span>
                                 </div>
                                 <span class="notification-unread-dot"></span>
                             </a>
                             <a href="#" class="notification-item">
                                 <div class="notification-icon bg-warning text-dark">
-                                    <i class="bi bi-box-seam-fill"></i>
+                                    <i class="bi bi-exclamation-triangle-fill"></i>
                                 </div>
                                 <div class="notification-content">
-                                    <p class="notification-text">Stock running low: <strong>Hoodie</strong></p>
+                                    <p class="notification-text">Overdue tasks: <strong>2 need attention</strong></p>
                                     <span class="notification-time">3 hours ago</span>
                                 </div>
                             </a>
@@ -173,7 +173,7 @@
                         <li><a class="dropdown-item" href="{% url 'settings' %}"><i class="bi bi-gear"></i> Settings</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="{% url 'auth-logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'auth-login' %}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -182,11 +182,11 @@
         <div class="page-header">
             <div>
                 <h1 class="page-title">Dashboard</h1>
-                <p class="page-subtitle">An easy way to manage sales with care and precision.</p>
+                <p class="page-subtitle">Here's what needs your attention today.</p>
             </div>
             <button class="btn-date-picker" type="button">
                 <i class="bi bi-calendar4-event"></i>
-                <span>January 12, 2026 - January 23, 2026</span>
+                <span>Mon, Sep 21 2026</span>
                 <i class="bi bi-chevron-down ms-1"></i>
             </button>
         </div>
@@ -197,12 +197,12 @@
                     <div class="col-md-4">
                         <div class="card alert-green-card">
                             <div class="position-relative z-1">
-                                <span class="alert-green-badge">Update</span>
-                                <div class="alert-green-date">Feb 14th 2026</div>
-                                <div class="alert-green-text">Sales revenue increased 40% in 1 week</div>
+                                <span class="alert-green-badge">Today</span>
+                                <div class="alert-green-date">Mon, Sep 21 2026</div>
+                                <div class="alert-green-text">5 tasks due today, 2 overdue</div>
                             </div>
                             <a href="#" class="alert-green-link z-1 position-relative">
-                                <span>See Statistics</span>
+                                <span>View today's tasks</span>
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                             <svg class="alert-green-bg-shape" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -219,7 +219,7 @@
                         <div class="card card-stat d-flex flex-column justify-content-between">
                             <div>
                                 <div class="card-header">
-                                    <span class="stat-label">Net Income</span>
+                                    <span class="stat-label">Tasks Completed</span>
                                     <div class="dropdown">
                                         <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
                                             <i class="bi bi-three-dots"></i>
@@ -227,19 +227,17 @@
                                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
                                             <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Refresh</a></li>
                                             <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Export Report</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-eye-slash"></i> Hide Details</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="stat-value">$196.000</div>
+                                <div class="stat-value">12</div>
                                 <div class="trend-badge trend-up">
                                     <i class="bi bi-arrow-up-right"></i>
-                                    <span>+35% from last month</span>
+                                    <span>+3 vs yesterday</span>
                                 </div>
                             </div>
                             <div class="sparkline-container">
-                                <svg viewBox="0 0 200 56" class="w-100" role="img" aria-label="Net income trend">
+                                <svg viewBox="0 0 200 56" class="w-100" role="img" aria-label="Tasks completed trend">
                                     <polyline points="0,44 25,42 50,43 75,34 100,36 125,27 150,29 175,16 200,13" fill="none" stroke="#072F1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
@@ -250,28 +248,26 @@
                         <div class="card card-stat d-flex flex-column justify-content-between">
                             <div>
                                 <div class="card-header">
-                                    <span class="stat-label">Total Return</span>
+                                    <span class="stat-label">Day Streak</span>
                                     <div class="dropdown">
                                         <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
                                             <i class="bi bi-three-dots"></i>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
                                             <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat"></i> Refresh</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Export Report</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-eye-slash"></i> Hide Details</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="bi bi-trophy"></i> View Records</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="stat-value">$32.000</div>
-                                <div class="trend-badge trend-down">
-                                    <i class="bi bi-arrow-down-left"></i>
-                                    <span>-24% from last month</span>
+                                <div class="stat-value">6 days</div>
+                                <div class="trend-badge trend-up">
+                                    <i class="bi bi-arrow-up-right"></i>
+                                    <span>Best: 14 days</span>
                                 </div>
                             </div>
                             <div class="sparkline-container">
-                                <svg viewBox="0 0 200 56" class="w-100" role="img" aria-label="Total return trend">
-                                    <polyline points="0,14 25,18 50,16 75,26 100,24 125,33 150,32 175,42 200,44" fill="none" stroke="#EF4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                <svg viewBox="0 0 200 56" class="w-100" role="img" aria-label="Streak trend">
+                                    <polyline points="0,40 25,38 50,39 75,30 100,32 125,24 150,22 175,16 200,14" fill="none" stroke="#B4F105" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                         </div>
@@ -281,91 +277,75 @@
 
             <div class="col-xl-9 col-lg-8">
                 <div class="row g-4">
-                    <div class="col-12">
-                        <div class="card mb-0">
-                            <div class="card-header mb-2">
-                                <h2 class="card-title">Revenue</h2>
-                                <div class="d-flex gap-3 align-items-center">
-                                    <div class="chart-legend-item">
-                                        <span class="legend-dot bg-forest-medium"></span>
-                                        <span class="chart-legend-label">Income</span>
-                                    </div>
-                                    <div class="chart-legend-item">
-                                        <span class="legend-dot bg-lime-accent"></span>
-                                        <span class="chart-legend-label">Expenses</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-baseline gap-2 mb-3">
-                                <span class="stat-value-amount">$196.000</span>
-                                <span class="trend-badge trend-up">+35% from last month</span>
-                            </div>
-                            <svg viewBox="0 0 600 220" class="w-100" role="img" aria-label="Revenue chart">
-                                <path d="M0,170 C60,160 90,120 140,125 C190,130 210,90 270,95 C330,100 350,60 410,65 C470,70 500,40 560,45 L600,40 L600,220 L0,220 Z" fill="rgba(180,241,5,0.15)" />
-                                <path d="M0,170 C60,160 90,120 140,125 C190,130 210,90 270,95 C330,100 350,60 410,65 C470,70 500,40 560,45 L600,40" fill="none" stroke="#072F1F" stroke-width="3" stroke-linecap="round" />
-                                <path d="M0,190 C70,185 110,165 170,168 C230,171 260,145 320,148 C380,151 420,128 480,130 C530,132 560,118 600,120" fill="none" stroke="#B4F105" stroke-width="3" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                    </div>
-
                     <div class="col-md-7 d-flex flex-column">
                         <div class="card h-100 flex-grow-1">
                             <div class="card-header">
-                                <h2 class="card-title">Transaction</h2>
+                                <h2 class="card-title">Today's Tasks</h2>
                                 <div class="dropdown">
                                     <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-funnel"></i> Filter Status</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down"></i> Export CSV</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-plus-lg"></i> Add Task</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-funnel"></i> Filter Priority</a></li>
                                     </ul>
                                 </div>
                             </div>
 
                             <div class="transaction-list">
                                 <div class="transaction-item">
-                                    <div class="transaction-icon bg-forest-light text-lime">
-                                        <i class="bi bi-spotify"></i>
-                                    </div>
+                                    <label class="custom-control-label mb-0">
+                                        <input type="checkbox" class="custom-checkbox-input" checked>
+                                    </label>
                                     <div class="transaction-info">
-                                        <div class="transaction-name">Spotify Subscription</div>
-                                        <div class="transaction-date">Feb 14, 2026 • 12:40 PM</div>
+                                        <div class="transaction-name">Read 20 pages</div>
+                                        <div class="transaction-date">Health • 6:30 AM</div>
                                     </div>
-                                    <div class="transaction-amount text-main">-$15.00</div>
+                                    <span class="badge text-bg-success">Done</span>
                                 </div>
 
                                 <div class="transaction-item">
-                                    <div class="transaction-icon bg-forest-light text-lime">
-                                        <i class="bi bi-paypal"></i>
-                                    </div>
+                                    <label class="custom-control-label mb-0">
+                                        <input type="checkbox" class="custom-checkbox-input">
+                                    </label>
                                     <div class="transaction-info">
-                                        <div class="transaction-name">Paypal Transfer</div>
-                                        <div class="transaction-date">Feb 13, 2026 • 08:15 AM</div>
+                                        <div class="transaction-name">Design review with team</div>
+                                        <div class="transaction-date">LifeOS App • 10:00 AM</div>
                                     </div>
-                                    <div class="transaction-amount text-success">+$1,250.00</div>
+                                    <span class="badge text-bg-danger">High</span>
                                 </div>
 
                                 <div class="transaction-item">
-                                    <div class="transaction-icon bg-forest-light text-lime">
-                                        <i class="bi bi-stripe"></i>
-                                    </div>
+                                    <label class="custom-control-label mb-0">
+                                        <input type="checkbox" class="custom-checkbox-input">
+                                    </label>
                                     <div class="transaction-info">
-                                        <div class="transaction-name">Stripe Payout</div>
-                                        <div class="transaction-date">Feb 11, 2026 • 04:30 PM</div>
+                                        <div class="transaction-name">Write project update</div>
+                                        <div class="transaction-date">Q3 Planning • 2:00 PM</div>
                                     </div>
-                                    <div class="transaction-amount text-success">+$3,400.00</div>
+                                    <span class="badge text-bg-warning">Medium</span>
                                 </div>
 
                                 <div class="transaction-item">
-                                    <div class="transaction-icon bg-forest-light text-lime">
-                                        <i class="bi bi-slack"></i>
-                                    </div>
+                                    <label class="custom-control-label mb-0">
+                                        <input type="checkbox" class="custom-checkbox-input">
+                                    </label>
                                     <div class="transaction-info">
-                                        <div class="transaction-name">Slack Pro Workspace</div>
-                                        <div class="transaction-date">Feb 09, 2026 • 09:20 AM</div>
+                                        <div class="transaction-name">Call accountant</div>
+                                        <div class="transaction-date">Finance • 4:00 PM</div>
                                     </div>
-                                    <div class="transaction-amount text-main">-$45.00</div>
+                                    <span class="badge text-bg-secondary">Low</span>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <label class="custom-control-label mb-0">
+                                        <input type="checkbox" class="custom-checkbox-input">
+                                    </label>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Pay electricity bill</div>
+                                        <div class="transaction-date">Personal • 5:00 PM</div>
+                                    </div>
+                                    <span class="badge text-bg-danger">High</span>
                                 </div>
                             </div>
                         </div>
@@ -374,75 +354,301 @@
                     <div class="col-md-5 d-flex flex-column">
                         <div class="card h-100 flex-grow-1">
                             <div class="card-header">
-                                <h2 class="card-title">Product Overview</h2>
+                                <h2 class="card-title">Overdue Tasks</h2>
+                                <span class="badge text-bg-danger">2 open</span>
+                            </div>
+
+                            <div class="transaction-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-danger bg-opacity-10 text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Submit expense report</div>
+                                        <div class="transaction-date">Due yesterday</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-danger bg-opacity-10 text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Renew domain</div>
+                                        <div class="transaction-date">Due 2 days ago</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-danger bg-opacity-10 text-danger">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Reply to Sarah</div>
+                                        <div class="transaction-date">Due yesterday</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 d-flex flex-column">
+                        <div class="card h-100 flex-grow-1">
+                            <div class="card-header">
+                                <h2 class="card-title">Active Goals</h2>
                                 <div class="dropdown">
                                     <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-plus-lg"></i> Add Product</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Manage</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-plus-lg"></i> Add Goal</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-flag"></i> View All</a></li>
                                     </ul>
                                 </div>
                             </div>
 
                             <div class="progress-container">
                                 <div class="progress-label-row">
-                                    <span class="progress-label">Product Launched</span>
-                                    <span class="progress-value">233</span>
+                                    <span class="progress-label">Launch MVP</span>
+                                    <span class="progress-value">75%</span>
                                 </div>
-                                <div class="progress" role="progressbar" aria-label="Product Launched Progress" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-lime-accent w-65"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress-container">
-                                <div class="progress-label-row">
-                                    <span class="progress-label">Ongoing Product</span>
-                                    <span class="progress-value">23</span>
-                                </div>
-                                <div class="progress" role="progressbar" aria-label="Ongoing Product Progress" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-lime-accent opacity-50 w-50"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress-container">
-                                <div class="progress-label-row">
-                                    <span class="progress-label">Product Sold</span>
-                                    <span class="progress-value">482</span>
-                                </div>
-                                <div class="progress" role="progressbar" aria-label="Product Sold Progress" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-lime-accent w-85"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress-container">
-                                <div class="progress-label-row">
-                                    <span class="progress-label">Product Returned</span>
-                                    <span class="progress-value">8</span>
-                                </div>
-                                <div class="progress" role="progressbar" aria-label="Product Returned Progress" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar bg-brand-orange w-38"></div>
-                                </div>
-                            </div>
-
-                            <div class="progress-container">
-                                <div class="progress-label-row">
-                                    <span class="progress-label">Product In Stock</span>
-                                    <span class="progress-value">1,420</span>
-                                </div>
-                                <div class="progress" role="progressbar" aria-label="Product In Stock Progress" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress" role="progressbar" aria-label="Launch MVP Progress" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-lime-accent w-75"></div>
                                 </div>
                             </div>
 
                             <div class="progress-container">
                                 <div class="progress-label-row">
-                                    <span class="progress-label">Pending Shipment</span>
-                                    <span class="progress-value">64</span>
+                                    <span class="progress-label">Read 12 books</span>
+                                    <span class="progress-value">50%</span>
                                 </div>
-                                <div class="progress" role="progressbar" aria-label="Pending Shipment Progress" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress" role="progressbar" aria-label="Read Books Progress" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-50"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Save $5k emergency fund</span>
+                                    <span class="progress-value">65%</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Emergency Fund Progress" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-65"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Run a 10k</span>
+                                    <span class="progress-value">38%</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Run 10k Progress" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-brand-orange w-38"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 d-flex flex-column">
+                        <div class="card h-100 flex-grow-1">
+                            <div class="card-header">
+                                <h2 class="card-title">Habit Progress</h2>
+                                <span class="trend-badge trend-up">This week</span>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Exercise</span>
+                                    <span class="progress-value">5 of 7</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Exercise Progress" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-75"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Read</span>
+                                    <span class="progress-value">4 of 7</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Read Progress" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-50"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Meditate</span>
+                                    <span class="progress-value">6 of 7</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Meditate Progress" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-85"></div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-2 mt-2">
+                                <span class="legend-dot bg-lime-accent"></span>
+                                <span class="legend-dot bg-lime-accent"></span>
+                                <span class="legend-dot bg-lime-accent"></span>
+                                <span class="legend-dot bg-lime-accent"></span>
+                                <span class="legend-dot bg-lime-accent"></span>
+                                <span class="legend-dot bg-lime-accent"></span>
+                                <span class="legend-dot bg-transparent border"></span>
+                                <span class="text-muted-green small ms-1">6-day streak</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7 d-flex flex-column">
+                        <div class="card h-100 flex-grow-1">
+                            <div class="card-header">
+                                <h2 class="card-title">Project Progress</h2>
+                                <div class="dropdown">
+                                    <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-plus-lg"></i> Add Project</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-kanban"></i> Board View</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Website Redesign</span>
+                                    <span class="progress-value">Due Oct 1 • 85%</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Website Redesign Progress" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-85"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">Mobile App v2</span>
+                                    <span class="progress-value">Due Oct 15 • 45%</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="Mobile App Progress" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-lime-accent opacity-50 w-45"></div>
+                                </div>
+                            </div>
+
+                            <div class="progress-container">
+                                <div class="progress-label-row">
+                                    <span class="progress-label">API Migration</span>
+                                    <span class="progress-value">Due Sep 30 • 65%</span>
+                                </div>
+                                <div class="progress" role="progressbar" aria-label="API Migration Progress" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar bg-lime-accent w-65"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 d-flex flex-column">
+                        <div class="card h-100 flex-grow-1">
+                            <div class="card-header">
+                                <h2 class="card-title">Recent Notes</h2>
+                                <div class="dropdown">
+                                    <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-journal-plus"></i> New Note</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-journals"></i> All Notes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="transaction-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-journal-text"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Sprint ideas</div>
+                                        <div class="transaction-date">Ship onboarding first, then billing… • 2h ago</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-journal-text"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Book notes: Atomic Habits</div>
+                                        <div class="transaction-date">You do not rise to your goals… • Yesterday</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-journal-text"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Meeting recap</div>
+                                        <div class="transaction-date">Decided: freeze scope Friday… • Yesterday</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card mb-0">
+                            <div class="card-header">
+                                <h2 class="card-title">Recent Activity</h2>
+                                <div class="dropdown">
+                                    <button class="card-more-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="More Options">
+                                        <i class="bi bi-three-dots"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-custom">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-funnel"></i> Filter Type</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-clock-history"></i> Full History</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="transaction-list">
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-check2-circle"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Completed "Morning run"</div>
+                                        <div class="transaction-date">Habits • 6:30 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-journal-plus"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Added note "Sprint ideas"</div>
+                                        <div class="transaction-date">Notes • 9:15 AM</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-flag-fill"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Reached goal milestone "Chapter 5"</div>
+                                        <div class="transaction-date">Goals • Yesterday</div>
+                                    </div>
+                                </div>
+
+                                <div class="transaction-item">
+                                    <div class="transaction-icon bg-forest-light text-lime">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                    </div>
+                                    <div class="transaction-info">
+                                        <div class="transaction-name">Moved "Design review" to Today</div>
+                                        <div class="transaction-date">Tasks • Yesterday</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -454,48 +660,92 @@
                 <div class="right-panel-wrapper d-flex flex-column gap-4 h-100">
                     <div class="card flex-grow-1 d-flex flex-column justify-content-between mb-0">
                         <div class="card-header mb-1">
-                            <h2 class="card-title">Total View Performance</h2>
+                            <h2 class="card-title">Upcoming</h2>
                         </div>
 
-                        <svg viewBox="0 0 120 120" class="w-100" role="img" aria-label="Total view performance">
+                        <div class="transaction-list">
+                            <div class="transaction-item">
+                                <div class="transaction-icon bg-forest-light text-lime">
+                                    <i class="bi bi-calendar-event"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-name">Design review</div>
+                                    <div class="transaction-date">Event • Today 10:00 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="transaction-item">
+                                <div class="transaction-icon bg-forest-light text-lime">
+                                    <i class="bi bi-bell"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-name">Take vitamins</div>
+                                    <div class="transaction-date">Reminder • Today 8:00 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="transaction-item">
+                                <div class="transaction-icon bg-forest-light text-lime">
+                                    <i class="bi bi-calendar-event"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-name">Dentist appointment</div>
+                                    <div class="transaction-date">Event • Tomorrow 9:00 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="transaction-item">
+                                <div class="transaction-icon bg-forest-light text-lime">
+                                    <i class="bi bi-bell"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-name">Domain renewal</div>
+                                    <div class="transaction-date">Reminder • Tomorrow</div>
+                                </div>
+                            </div>
+
+                            <div class="transaction-item">
+                                <div class="transaction-icon bg-forest-light text-lime">
+                                    <i class="bi bi-calendar-event"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <div class="transaction-name">Sprint planning</div>
+                                    <div class="transaction-date">Event • Fri 2:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card flex-grow-1 d-flex flex-column justify-content-between mb-0">
+                        <div class="card-header mb-1">
+                            <h2 class="card-title">Weekly Overview</h2>
+                        </div>
+
+                        <svg viewBox="0 0 120 120" class="w-100" role="img" aria-label="Weekly overview">
                             <g transform="rotate(-90 60 60)">
                                 <circle cx="60" cy="60" r="48" fill="none" stroke="#E9EFEF" stroke-width="16" />
-                                <circle cx="60" cy="60" r="48" fill="none" stroke="#B4F105" stroke-width="16" stroke-dasharray="135.7 301.6" stroke-dashoffset="0" stroke-linecap="round" />
-                                <circle cx="60" cy="60" r="48" fill="none" stroke="#072F1F" stroke-width="16" stroke-dasharray="105.6 301.6" stroke-dashoffset="-135.7" />
-                                <circle cx="60" cy="60" r="48" fill="none" stroke="#F97316" stroke-width="16" stroke-dasharray="60.3 301.6" stroke-dashoffset="-241.3" />
+                                <circle cx="60" cy="60" r="48" fill="none" stroke="#B4F105" stroke-width="16" stroke-dasharray="181 301.6" stroke-dashoffset="0" stroke-linecap="round" />
+                                <circle cx="60" cy="60" r="48" fill="none" stroke="#072F1F" stroke-width="16" stroke-dasharray="75.4 301.6" stroke-dashoffset="-181" />
+                                <circle cx="60" cy="60" r="48" fill="none" stroke="#F97316" stroke-width="16" stroke-dasharray="45.2 301.6" stroke-dashoffset="-256.4" />
                             </g>
-                            <text x="60" y="58" text-anchor="middle" font-size="18" font-weight="800" fill="#0B130F">48.5K</text>
-                            <text x="60" y="74" text-anchor="middle" font-size="9" font-weight="600" fill="#6C7E75">Total Views</text>
+                            <text x="60" y="58" text-anchor="middle" font-size="18" font-weight="800" fill="#0B130F">18</text>
+                            <text x="60" y="74" text-anchor="middle" font-size="9" font-weight="600" fill="#6C7E75">done this week</text>
                         </svg>
 
                         <div class="chart-legends-container">
                             <div class="chart-legend-item">
                                 <span class="legend-dot bg-lime-accent"></span>
-                                <span class="text-muted-green">View Count</span>
+                                <span class="text-muted-green">Completed</span>
                             </div>
                             <div class="chart-legend-item">
                                 <span class="legend-dot bg-forest-medium"></span>
-                                <span class="text-muted-green">Percentage</span>
+                                <span class="text-muted-green">In Progress</span>
                             </div>
                             <div class="chart-legend-item">
                                 <span class="legend-dot bg-brand-orange"></span>
-                                <span class="text-muted-green">Sales</span>
+                                <span class="text-muted-green">Overdue</span>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="promo-banner-card">
-                        <svg class="promo-banner-bg-shape" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(50,50)">
-                                <rect x="-6" y="-45" width="12" height="90" rx="6" fill="#B4F105" />
-                                <rect x="-6" y="-45" width="12" height="90" rx="6" fill="#B4F105" transform="rotate(60)" />
-                                <rect x="-6" y="-45" width="12" height="90" rx="6" fill="#B4F105" transform="rotate(120)" />
-                            </g>
-                        </svg>
-
-                        <h3 class="promo-title">Level up your sales managing to the next level.</h3>
-                        <p class="promo-desc">An easy way to manage sales with care and precision.</p>
-                        <button class="btn-promo" type="button">Check the updates now</button>
                     </div>
                 </div>
             </div>

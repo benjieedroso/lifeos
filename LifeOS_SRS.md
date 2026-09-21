@@ -182,11 +182,11 @@ For example:
 
 **US-AUTHZ-01**
 
-> As a user, I want my personal information to remain private from other users.
+> As a user, I want my personal information to remain private from other users. - done
 
 **US-AUTHZ-02**
 
-> As a user, I want LifeOS to prevent unauthorized users from accessing my records.
+> As a user, I want LifeOS to prevent unauthorized users from accessing my records. - done
 
 **US-AUTHZ-03**
 
