@@ -155,11 +155,11 @@ LifeOS shall provide account authentication.
 
 **US-AUTH-06**
 
-> As a user, I want to verify my email address so that LifeOS can confirm ownership of my account.
+> As a user, I want to verify my email address so that LifeOS can confirm ownership of my account. - done
 
 **US-AUTH-07**
 
-> As a user, I want to deactivate or delete my account if I no longer want to use LifeOS.
+> As a user, I want to deactivate or delete my account if I no longer want to use LifeOS. - done
 
 ---
 

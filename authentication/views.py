@@ -1,4 +1,4 @@
-from multiprocessing.pool import AsyncResult
+from celery.result import AsyncResult
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import PasswordResetForm
@@ -12,12 +12,15 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from datetime import timedelta, timezone
+from datetime import timedelta
+from django.utils import timezone
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .tasks import delete_account
 
 from lifeos import settings
+
+from .models import Profile
 
 
 # Create your views here.
@@ -94,21 +97,22 @@ def logout_view(request):
 	logout(request)
 	return redirect('auth-login')
 
+@login_required
 def deactivate_account_view(request):
 	if request.method == 'POST':
 		user = request.user
 		deadline = timezone.now() + timedelta(days=7)
 
 		user.is_active = False
-		user.save(updated_fields=['is_active'])
+		user.save()
 
-		profile = user.profile
+		profile, _ = Profile.objects.get_or_create(user=user)
 		profile.scheduled_deletion_at = deadline
-		profile.save(updated_fields=['scheduled_deletion_at'])
+		profile.save(update_fields=['scheduled_deletion_at'])
 
-		result = delete_account.apply_sync(args=[user.pk], eta=deadline)
+		result = delete_account.apply_async(args=[user.pk], eta=deadline)
 		profile.deletion_task_id = result.id
-		profile.save(updated_fields=['deletion_task_id'])
+		profile.save(update_fields=['deletion_task_id'])
 
 		send_deactivation_email(request, user, deadline)
 		logout(request)
@@ -143,7 +147,7 @@ def cancel_deletion_view(request, uidb64, token):
 		user = None
 	if user is None or not default_token_generator.check_token(user, token):
 		return render(request, 'authentication/verify_failed.html')
-	profile = user.profile
+	profile, _ = Profile.objects.get_or_create(user=user)
 	if profile.scheduled_deletion_at is None:
 		return redirect('auth-login')
 	if profile.deletion_task_id:
@@ -152,7 +156,7 @@ def cancel_deletion_view(request, uidb64, token):
 	user.save(update_fields=['is_active'])
 	profile.scheduled_deletion_at = None 
 	profile.deletion_task_id = None
-	profile.save(updated_fields=['scheduled_deletion_at', 'deletion_task_id'])
+	profile.save(update_fields=['scheduled_deletion_at', 'deletion_task_id'])
 	return redirect('auth-login')
 	
 
