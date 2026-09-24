@@ -1,0 +1,99 @@
+ <div class="main-wrapper">
+        <header class="navbar-custom">
+            <div class="navbar-left">
+                <button class="btn-desktop-toggle d-none d-xl-flex align-items-center justify-content-center me-3" id="desktop-sidebar-toggle" aria-label="Minimize Sidebar">
+                    <i class="bi bi-chevron-bar-left"></i>
+                </button>
+                <button class="sidebar-toggle-btn me-2" id="sidebar-toggle" aria-label="Toggle Navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div class="dropdown ms-2">
+                    <button class="btn-quick-action dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-plus-lg"></i>
+                        <span>Create</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-quick-action">
+                        <li class="dropdown-header">Quick Action Shortcuts</li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark-plus"></i> New Task</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-calendar-plus"></i> New Event</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-journal-plus"></i> New Note</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> System Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="navbar-search-wrapper">
+                <input type="text" class="navbar-search-input" placeholder="Search anything in LifeOS...">
+                <button class="navbar-search-btn" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
+            <div class="navbar-actions">
+                <button class="navbar-action-btn me-1" aria-label="Toggle Fullscreen" id="btn-fullscreen">
+                    <i class="bi bi-arrows-fullscreen"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="navbar-action-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                        <i class="bi bi-bell"></i>
+                        <span class="navbar-action-badge"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-notification p-0">
+                        <div class="notification-header">
+                            <h6 class="notification-title">Notifications</h6>
+                            <button class="btn-clear-all" type="button">Mark all read</button>
+                        </div>
+                        <div class="notification-list">
+                            <a href="#" class="notification-item">
+                                <div class="notification-icon bg-success text-white">
+                                    <i class="bi bi-check2-circle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Habit streak: <strong>6 days</strong> of morning runs</p>
+                                    <span class="notification-time">2 mins ago</span>
+                                </div>
+                                <span class="notification-unread-dot"></span>
+                            </a>
+                            <a href="#" class="notification-item">
+                                <div class="notification-icon bg-primary text-white">
+                                    <i class="bi bi-flag-fill"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Goal milestone reached: <strong>Chapter 5 done</strong></p>
+                                    <span class="notification-time">1 hour ago</span>
+                                </div>
+                                <span class="notification-unread-dot"></span>
+                            </a>
+                            <a href="#" class="notification-item">
+                                <div class="notification-icon bg-warning text-dark">
+                                    <i class="bi bi-exclamation-triangle-fill"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="notification-text">Overdue tasks: <strong>2 need attention</strong></p>
+                                    <span class="notification-time">3 hours ago</span>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="#" class="notification-footer">View All Notifications</a>
+                    </div>
+                </div>
+
+                <div class="dropdown ms-2">
+                    <button class="navbar-profile-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="navbar-profile-img profile-avatar">{{ user.username|default:'Administrator'|first|upper }}</div>
+                        <span class="navbar-profile-name d-none d-md-inline">{{ user.username|default:'Administrator' }}</span>
+                        <i class="bi bi-chevron-down navbar-profile-caret"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-profile">
+                        <li class="dropdown-header">Welcome !</li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Account</a></li>
+                        <li><a class="dropdown-item" href="{% url 'settings' %}"><i class="bi bi-gear"></i> Settings</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="{% url 'auth-login' %}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>

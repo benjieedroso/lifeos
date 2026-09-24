@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'authentication',
     'dashboard',
+    'task',
     'django_celery_beat'
 ]
 

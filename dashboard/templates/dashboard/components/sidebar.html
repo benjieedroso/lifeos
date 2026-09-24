@@ -1,0 +1,82 @@
+    <div class="sidebar-wrapper" id="sidebar">
+        <a href="{% url 'dashboard' %}" class="sidebar-brand">
+            <i class="bi bi-asterisk"></i>
+            <span>LifeOS</span>
+        </a>
+
+        <div class="flex-grow-1 overflow-y-auto">
+            <div class="sidebar-menu-section">
+                <div class="sidebar-menu-title">Menu</div>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">
+                        <a href="{% url 'dashboard' %}" class="sidebar-menu-link {% if request.resolver_match.url_name == 'dashboard'%}active{% endif %}" title="Overview">
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                     <li class="sidebar-menu-item">
+                        <a href="{% url 'task:task-index' %}" class="sidebar-menu-link {% if request.resolver_match.namespace == 'task' %}active{% endif %}" title="Task Management">
+                            <i class="bi bi-list-task"></i>
+                            <span>Task Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-menu-section">
+                <div class="sidebar-menu-title">Components</div>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Basic Tables">
+                            <i class="bi bi-table"></i>
+                            <span>Basic Tables</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Forms and Input">
+                            <i class="bi bi-input-cursor-text"></i>
+                            <span>Forms & Input</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Buttons">
+                            <i class="bi bi-menu-button-wide-fill"></i>
+                            <span>Buttons & Alerts</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-menu-section">
+                <div class="sidebar-menu-title">Pages</div>
+                <ul class="sidebar-menu-list">
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="Blank Page">
+                            <i class="bi bi-file-earmark"></i>
+                            <span>Blank Page</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="{% url 'auth-login' %}" class="sidebar-menu-link" title="Login Page">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>Login Screen</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link" title="404 Page">
+                            <i class="bi bi-slash-circle"></i>
+                            <span>Error 404</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sidebar-profile">
+            <div class="sidebar-profile-img profile-avatar">{{ user.username|default:'Administrator'|first|upper }}</div>
+            <div class="sidebar-profile-info">
+                <div class="sidebar-profile-name">{{ user.username|default:'Administrator' }}</div>
+                <div class="sidebar-profile-email">{{ user.email|default:'admin@email.com' }}</div>
+            </div>
+        </div>
+    </div>
