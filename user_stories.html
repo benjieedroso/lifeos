@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeOS — All User Stories Tracker</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:1000px;margin:0 auto;padding:1.5rem 1rem 4rem;line-height:1.6;color:#222;background:#fafbfc}
+header{background:#fff;border:1px solid #e1e4e8;border-radius:12px;padding:1.2rem 1.2rem 1rem;position:sticky;top:0.5rem;z-index:10;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+h1{margin:0 0 .3rem;font-size:1.6rem;color:#2c3e50}
+.sub{color:#666;margin:.2rem 0 .8rem;font-size:.95rem}
+.progress-wrap{background:#e9ecef;border-radius:20px;height:14px;overflow:hidden;margin:.6rem 0}
+#progressBar{height:100%;width:0;background:#27ae60;transition:width .3s}
+#progressText{font-weight:600;margin:.3rem 0}
+.controls{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}
+.controls input[type=search]{flex:1;min-width:200px;padding:.55rem .7rem;border:1px solid #ccc;border-radius:8px;font-size:.95rem}
+button{padding:.55rem .9rem;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:.9rem}
+button.active{background:#2c3e50;color:#fff;border-color:#2c3e50}
+button.danger{border-color:#e74c3c;color:#e74c3c}
+section.group{background:#fff;border:1px solid #e1e4e8;border-radius:12px;margin-top:1.2rem;padding:1rem}
+section.group h2{margin:0 0 .6rem;color:#2c3e50;font-size:1.15rem;display:flex;justify-content:space-between;align-items:center}
+.group-count{font-size:.8rem;background:#eef2f7;padding:.15rem .6rem;border-radius:20px;color:#2c3e50;font-weight:600}
+.story{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .6rem;border:1px solid #eee;border-radius:8px;margin:.45rem 0;cursor:pointer;background:#fff}
+.story:hover{background:#f8f9fa}
+.story.done{background:#eafaf1;border-color:#bfe9cd}
+.story input{margin-top:.35rem;width:18px;height:18px;accent-color:#27ae60;flex-shrink:0}
+.sid{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;background:#2c3e50;color:#fff;padding:.1rem .45rem;border-radius:6px;white-space:nowrap}
+.badge{font-size:.75rem;padding:.1rem .5rem;border-radius:20px;margin-left:.4rem;font-weight:700}
+.badge.yes{background:#27ae60;color:#fff}
+.badge.no{background:#e9ecef;color:#555}
+.txt{display:block;margin-top:.25rem}
+.hidden{display:none!important}
+footer{margin-top:2rem;color:#777;font-size:.85rem;text-align:center}
+code{background:#eef2f7;padding:.1rem .35rem;border-radius:5px}
+</style>
+</head>
+<body>
+<header>
+<h1>LifeOS — User Stories Tracker</h1>
+<div class="sub">Source: <code>LifeOS_SRS.md</code> v1.0 Draft • 10 pre-marked done from md file • Click to toggle • Saved in this browser</div>
+<div class="progress-wrap"><div id="progressBar"></div></div>
+<div id="progressText">Loading…</div>
+<div class="controls">
+<input type="search" id="search" placeholder="Search stories… e.g. password, habit, task">
+<button data-filter="all" class="active">All</button>
+<button data-filter="done">Done</button>
+<button data-filter="todo">To-Do</button>
+<button id="resetBtn" class="danger" title="Clear browser saves and restore md defaults">Reset to md defaults</button>
+</div>
+</header>
+<main id="list">
+
+<section class="group" data-group="Authentication">
+<h2>5.1 Authentication <span class="group-count"></span></h2>
+<label class="story" data-id="US-AUTH-01"><input type="checkbox"><span><span class="sid">US-AUTH-01</span><span class="badge"></span><span class="txt">As a visitor, I want to register an account so that I can use LifeOS.</span></span></label>
+<label class="story" data-id="US-AUTH-02"><input type="checkbox"><span><span class="sid">US-AUTH-02</span><span class="badge"></span><span class="txt">As a registered user, I want to log in so that I can access my personal information.</span></span></label>
+<label class="story" data-id="US-AUTH-03"><input type="checkbox"><span><span class="sid">US-AUTH-03</span><span class="badge"></span><span class="txt">As a user, I want to log out so that my account remains protected when I finish using LifeOS.</span></span></label>
+<label class="story" data-id="US-AUTH-04"><input type="checkbox"><span><span class="sid">US-AUTH-04</span><span class="badge"></span><span class="txt">As a user, I want to reset my password if I forget it.</span></span></label>
+<label class="story" data-id="US-AUTH-05"><input type="checkbox"><span><span class="sid">US-AUTH-05</span><span class="badge"></span><span class="txt">As a user, I want to change my password so that I can maintain account security.</span></span></label>
+<label class="story" data-id="US-AUTH-06"><input type="checkbox"><span><span class="sid">US-AUTH-06</span><span class="badge"></span><span class="txt">As a user, I want to verify my email address so that LifeOS can confirm ownership of my account.</span></span></label>
+<label class="story" data-id="US-AUTH-07"><input type="checkbox"><span><span class="sid">US-AUTH-07</span><span class="badge"></span><span class="txt">As a user, I want to deactivate or delete my account if I no longer want to use LifeOS.</span></span></label>
+</section>
+
+<section class="group" data-group="Authorization">
+<h2>5.2 Authorization <span class="group-count"></span></h2>
+<label class="story" data-id="US-AUTHZ-01"><input type="checkbox"><span><span class="sid">US-AUTHZ-01</span><span class="badge"></span><span class="txt">As a user, I want my personal information to remain private from other users.</span></span></label>
+<label class="story" data-id="US-AUTHZ-02"><input type="checkbox"><span><span class="sid">US-AUTHZ-02</span><span class="badge"></span><span class="txt">As a user, I want LifeOS to prevent unauthorized users from accessing my records.</span></span></label>
+<label class="story" data-id="US-AUTHZ-03"><input type="checkbox"><span><span class="sid">US-AUTHZ-03</span><span class="badge"></span><span class="txt">As an administrator, I want administrative permissions separated from normal user permissions.</span></span></label>
+</section>
+
+<section class="group" data-group="Dashboard">
+<h2>5.3 Dashboard <span class="group-count"></span></h2>
+<label class="story" data-id="US-DASH-01"><input type="checkbox"><span><span class="sid">US-DASH-01</span><span class="badge"></span><span class="txt">As a user, I want to see my most important information immediately after logging in.</span></span></label>
+<label class="story" data-id="US-DASH-02"><input type="checkbox"><span><span class="sid">US-DASH-02</span><span class="badge"></span><span class="txt">As a user, I want to see what I need to accomplish today.</span></span></label>
+<label class="story" data-id="US-DASH-03"><input type="checkbox"><span><span class="sid">US-DASH-03</span><span class="badge"></span><span class="txt">As a user, I want to see my upcoming deadlines.</span></span></label>
+<label class="story" data-id="US-DASH-04"><input type="checkbox"><span><span class="sid">US-DASH-04</span><span class="badge"></span><span class="txt">As a user, I want to see my progress toward my goals.</span></span></label>
+</section>
+
+<section class="group" data-group="Tasks">
+<h2>5.4 Task Management <span class="group-count"></span></h2>
+<label class="story" data-id="US-TASK-01"><input type="checkbox"><span><span class="sid">US-TASK-01</span><span class="badge"></span><span class="txt">As a user, I want to create a task so that I can remember something I need to accomplish.</span></span></label>
+<label class="story" data-id="US-TASK-02"><input type="checkbox"><span><span class="sid">US-TASK-02</span><span class="badge"></span><span class="txt">As a user, I want to mark a task as completed when I finish it.</span></span></label>
+<label class="story" data-id="US-TASK-03"><input type="checkbox"><span><span class="sid">US-TASK-03</span><span class="badge"></span><span class="txt">As a user, I want to assign a due date so that I know when a task needs to be completed.</span></span></label>
+<label class="story" data-id="US-TASK-04"><input type="checkbox"><span><span class="sid">US-TASK-04</span><span class="badge"></span><span class="txt">As a user, I want to prioritize tasks so that I know what requires my attention first.</span></span></label>
+<label class="story" data-id="US-TASK-05"><input type="checkbox"><span><span class="sid">US-TASK-05</span><span class="badge"></span><span class="txt">As a user, I want to edit a task if its information changes.</span></span></label>
+<label class="story" data-id="US-TASK-06"><input type="checkbox"><span><span class="sid">US-TASK-06</span><span class="badge"></span><span class="txt">As a user, I want to delete tasks that I no longer need.</span></span></label>
+</section>
+
+<section class="group" data-group="Goals">
+<h2>5.5 Goals <span class="group-count"></span></h2>
+<label class="story" data-id="US-GOAL-01"><input type="checkbox"><span><span class="sid">US-GOAL-01</span><span class="badge"></span><span class="txt">As a user, I want to create a goal so that I can define something I want to accomplish.</span></span></label>
+<label class="story" data-id="US-GOAL-02"><input type="checkbox"><span><span class="sid">US-GOAL-02</span><span class="badge"></span><span class="txt">As a user, I want to set a target date so that I have a deadline.</span></span></label>
+<label class="story" data-id="US-GOAL-03"><input type="checkbox"><span><span class="sid">US-GOAL-03</span><span class="badge"></span><span class="txt">As a user, I want to track my progress toward a goal.</span></span></label>
+<label class="story" data-id="US-GOAL-04"><input type="checkbox"><span><span class="sid">US-GOAL-04</span><span class="badge"></span><span class="txt">As a user, I want to divide a large goal into smaller milestones.</span></span></label>
+<label class="story" data-id="US-GOAL-05"><input type="checkbox"><span><span class="sid">US-GOAL-05</span><span class="badge"></span><span class="txt">As a user, I want to connect tasks and projects to my goal.</span></span></label>
+</section>
+
+<section class="group" data-group="Habits">
+<h2>5.6 Habit Tracking <span class="group-count"></span></h2>
+<label class="story" data-id="US-HABIT-01"><input type="checkbox"><span><span class="sid">US-HABIT-01</span><span class="badge"></span><span class="txt">As a user, I want to create a habit so that I can develop consistent behavior.</span></span></label>
+<label class="story" data-id="US-HABIT-02"><input type="checkbox"><span><span class="sid">US-HABIT-02</span><span class="badge"></span><span class="txt">As a user, I want to mark a habit as completed each day.</span></span></label>
+<label class="story" data-id="US-HABIT-03"><input type="checkbox"><span><span class="sid">US-HABIT-03</span><span class="badge"></span><span class="txt">As a user, I want to see my habit streak.</span></span></label>
+<label class="story" data-id="US-HABIT-04"><input type="checkbox"><span><span class="sid">US-HABIT-04</span><span class="badge"></span><span class="txt">As a user, I want to see my historical habit performance.</span></span></label>
+<label class="story" data-id="US-HABIT-05"><input type="checkbox"><span><span class="sid">US-HABIT-05</span><span class="badge"></span><span class="txt">As a user, I want to edit or remove a habit.</span></span></label>
+</section>
+
+<section class="group" data-group="Routines">
+<h2>5.7 Routines <span class="group-count"></span></h2>
+<label class="story" data-id="US-ROUTINE-01"><input type="checkbox"><span><span class="sid">US-ROUTINE-01</span><span class="badge"></span><span class="txt">As a user, I want to create a routine so that I can structure recurring activities.</span></span></label>
+<label class="story" data-id="US-ROUTINE-02"><input type="checkbox"><span><span class="sid">US-ROUTINE-02</span><span class="badge"></span><span class="txt">As a user, I want to define the steps in a routine.</span></span></label>
+<label class="story" data-id="US-ROUTINE-03"><input type="checkbox"><span><span class="sid">US-ROUTINE-03</span><span class="badge"></span><span class="txt">As a user, I want to track whether I completed my routine.</span></span></label>
+<label class="story" data-id="US-ROUTINE-04"><input type="checkbox"><span><span class="sid">US-ROUTINE-04</span><span class="badge"></span><span class="txt">As a user, I want to schedule routines for specific days or times.</span></span></label>
+</section>
+
+<section class="group" data-group="Calendar">
+<h2>5.8 Calendar &amp; Events <span class="group-count"></span></h2>
+<label class="story" data-id="US-CAL-01"><input type="checkbox"><span><span class="sid">US-CAL-01</span><span class="badge"></span><span class="txt">As a user, I want to create an event so that I can remember appointments and activities.</span></span></label>
+<label class="story" data-id="US-CAL-02"><input type="checkbox"><span><span class="sid">US-CAL-02</span><span class="badge"></span><span class="txt">As a user, I want to see my upcoming events.</span></span></label>
+<label class="story" data-id="US-CAL-03"><input type="checkbox"><span><span class="sid">US-CAL-03</span><span class="badge"></span><span class="txt">As a user, I want to receive reminders before important events.</span></span></label>
+<label class="story" data-id="US-CAL-04"><input type="checkbox"><span><span class="sid">US-CAL-04</span><span class="badge"></span><span class="txt">As a user, I want recurring events for activities that happen regularly.</span></span></label>
+</section>
+
+<section class="group" data-group="Projects">
+<h2>5.9 Projects <span class="group-count"></span></h2>
+<label class="story" data-id="US-PROJ-01"><input type="checkbox"><span><span class="sid">US-PROJ-01</span><span class="badge"></span><span class="txt">As a user, I want to create projects so that I can organize related tasks.</span></span></label>
+<label class="story" data-id="US-PROJ-02"><input type="checkbox"><span><span class="sid">US-PROJ-02</span><span class="badge"></span><span class="txt">As a user, I want to track project progress.</span></span></label>
+<label class="story" data-id="US-PROJ-03"><input type="checkbox"><span><span class="sid">US-PROJ-03</span><span class="badge"></span><span class="txt">As a user, I want to associate tasks with projects.</span></span></label>
+<label class="story" data-id="US-PROJ-04"><input type="checkbox"><span><span class="sid">US-PROJ-04</span><span class="badge"></span><span class="txt">As a user, I want to mark projects as completed.</span></span></label>
+</section>
+
+<section class="group" data-group="Notes">
+<h2>5.10 Notes <span class="group-count"></span></h2>
+<label class="story" data-id="US-NOTE-01"><input type="checkbox"><span><span class="sid">US-NOTE-01</span><span class="badge"></span><span class="txt">As a user, I want to create notes so that I can store information I want to remember.</span></span></label>
+<label class="story" data-id="US-NOTE-02"><input type="checkbox"><span><span class="sid">US-NOTE-02</span><span class="badge"></span><span class="txt">As a user, I want to organize notes using categories and tags.</span></span></label>
+<label class="story" data-id="US-NOTE-03"><input type="checkbox"><span><span class="sid">US-NOTE-03</span><span class="badge"></span><span class="txt">As a user, I want to search my notes.</span></span></label>
+<label class="story" data-id="US-NOTE-04"><input type="checkbox"><span><span class="sid">US-NOTE-04</span><span class="badge"></span><span class="txt">As a user, I want to archive notes that I no longer actively use.</span></span></label>
+</section>
+
+<section class="group" data-group="Reminders">
+<h2>5.11 Reminders <span class="group-count"></span></h2>
+<label class="story" data-id="US-REM-01"><input type="checkbox"><span><span class="sid">US-REM-01</span><span class="badge"></span><span class="txt">As a user, I want to create reminders so that I don't forget important activities.</span></span></label>
+<label class="story" data-id="US-REM-02"><input type="checkbox"><span><span class="sid">US-REM-02</span><span class="badge"></span><span class="txt">As a user, I want to choose when I receive a reminder.</span></span></label>
+<label class="story" data-id="US-REM-03"><input type="checkbox"><span><span class="sid">US-REM-03</span><span class="badge"></span><span class="txt">As a user, I want to dismiss reminders after seeing them.</span></span></label>
+</section>
+
+<section class="group" data-group="Search">
+<h2>5.12 Search, Filtering, Sorting &amp; Pagination <span class="group-count"></span></h2>
+<label class="story" data-id="US-SEARCH-01"><input type="checkbox"><span><span class="sid">US-SEARCH-01</span><span class="badge"></span><span class="txt">As a user, I want to search my records so that I can quickly find information.</span></span></label>
+<label class="story" data-id="US-SEARCH-02"><input type="checkbox"><span><span class="sid">US-SEARCH-02</span><span class="badge"></span><span class="txt">As a user, I want to filter my tasks so that I can focus on relevant items.</span></span></label>
+<label class="story" data-id="US-SEARCH-03"><input type="checkbox"><span><span class="sid">US-SEARCH-03</span><span class="badge"></span><span class="txt">As a user, I want to sort records so that I can view them in the order I need.</span></span></label>
+<label class="story" data-id="US-SEARCH-04"><input type="checkbox"><span><span class="sid">US-SEARCH-04</span><span class="badge"></span><span class="txt">As a user, I want large lists divided into pages so that they remain easy to navigate.</span></span></label>
+</section>
+
+<section class="group" data-group="Files">
+<h2>5.13 Files &amp; Documents <span class="group-count"></span></h2>
+<label class="story" data-id="US-FILE-01"><input type="checkbox"><span><span class="sid">US-FILE-01</span><span class="badge"></span><span class="txt">As a user, I want to upload personal documents so that I can keep them organized.</span></span></label>
+<label class="story" data-id="US-FILE-02"><input type="checkbox"><span><span class="sid">US-FILE-02</span><span class="badge"></span><span class="txt">As a user, I want to download my documents when I need them.</span></span></label>
+<label class="story" data-id="US-FILE-03"><input type="checkbox"><span><span class="sid">US-FILE-03</span><span class="badge"></span><span class="txt">As a user, I want documents protected from unauthorized users.</span></span></label>
+<label class="story" data-id="US-FILE-04"><input type="checkbox"><span><span class="sid">US-FILE-04</span><span class="badge"></span><span class="txt">As a user, I want to organize documents into categories.</span></span></label>
+</section>
+
+<section class="group" data-group="Notifications">
+<h2>5.14 Notifications <span class="group-count"></span></h2>
+<label class="story" data-id="US-NOTIF-01"><input type="checkbox"><span><span class="sid">US-NOTIF-01</span><span class="badge"></span><span class="txt">As a user, I want to receive notifications about important upcoming activities.</span></span></label>
+<label class="story" data-id="US-NOTIF-02"><input type="checkbox"><span><span class="sid">US-NOTIF-02</span><span class="badge"></span><span class="txt">As a user, I want to mark notifications as read.</span></span></label>
+<label class="story" data-id="US-NOTIF-03"><input type="checkbox"><span><span class="sid">US-NOTIF-03</span><span class="badge"></span><span class="txt">As a user, I want to control which notifications I receive.</span></span></label>
+</section>
+
+<section class="group" data-group="Email">
+<h2>5.15 Email Communication <span class="group-count"></span></h2>
+<label class="story" data-id="US-EMAIL-01"><input type="checkbox"><span><span class="sid">US-EMAIL-01</span><span class="badge"></span><span class="txt">As a user, I want to receive an email when I need to verify my account.</span></span></label>
+<label class="story" data-id="US-EMAIL-02"><input type="checkbox"><span><span class="sid">US-EMAIL-02</span><span class="badge"></span><span class="txt">As a user, I want to receive password-reset instructions by email.</span></span></label>
+<label class="story" data-id="US-EMAIL-03"><input type="checkbox"><span><span class="sid">US-EMAIL-03</span><span class="badge"></span><span class="txt">As a user, I want to control optional email notifications.</span></span></label>
+</section>
+
+<section class="group" data-group="Stats">
+<h2>5.16 Personal Statistics <span class="group-count"></span></h2>
+<label class="story" data-id="US-STATS-01"><input type="checkbox"><span><span class="sid">US-STATS-01</span><span class="badge"></span><span class="txt">As a user, I want to see statistics about my activities so that I can understand my progress over time.</span></span></label>
+</section>
+
+<section class="group" data-group="Settings">
+<h2>5.17 Settings <span class="group-count"></span></h2>
+<label class="story" data-id="US-SET-01"><input type="checkbox"><span><span class="sid">US-SET-01</span><span class="badge"></span><span class="txt">As a user, I want to configure my personal preferences.</span></span></label>
+<label class="story" data-id="US-SET-02"><input type="checkbox"><span><span class="sid">US-SET-02</span><span class="badge"></span><span class="txt">As a user, I want to choose my timezone so that dates and reminders are correct.</span></span></label>
+<label class="story" data-id="US-SET-03"><input type="checkbox"><span><span class="sid">US-SET-03</span><span class="badge"></span><span class="txt">As a user, I want to control my notification preferences.</span></span></label>
+</section>
+
+<section class="group" data-group="Audit">
+<h2>5.18 Activity &amp; Audit History <span class="group-count"></span></h2>
+<label class="story" data-id="US-AUDIT-01"><input type="checkbox"><span><span class="sid">US-AUDIT-01</span><span class="badge"></span><span class="txt">As a user, I want to see important activity on my account so that I know what changes have occurred.</span></span></label>
+<label class="story" data-id="US-AUDIT-02"><input type="checkbox"><span><span class="sid">US-AUDIT-02</span><span class="badge"></span><span class="txt">As an administrator, I want system activity recorded so that security and operational issues can be investigated.</span></span></label>
+</section>
+
+<section class="group" data-group="Admin">
+<h2>5.19 Administration <span class="group-count"></span></h2>
+<label class="story" data-id="US-ADMIN-01"><input type="checkbox"><span><span class="sid">US-ADMIN-01</span><span class="badge"></span><span class="txt">As an administrator, I want to view registered users so that I can manage the application.</span></span></label>
+<label class="story" data-id="US-ADMIN-02"><input type="checkbox"><span><span class="sid">US-ADMIN-02</span><span class="badge"></span><span class="txt">As an administrator, I want to deactivate problematic accounts.</span></span></label>
+<label class="story" data-id="US-ADMIN-03"><input type="checkbox"><span><span class="sid">US-ADMIN-03</span><span class="badge"></span><span class="txt">As an administrator, I want to monitor system errors.</span></span></label>
+<label class="story" data-id="US-ADMIN-04"><input type="checkbox"><span><span class="sid">US-ADMIN-04</span><span class="badge"></span><span class="txt">As an administrator, I want to review audit information when investigating problems.</span></span></label>
+</section>
+
+<section class="group" data-group="Logic">
+<h2>5.20 Business Logic <span class="group-count"></span></h2>
+<label class="story" data-id="US-LOGIC-01"><input type="checkbox"><span><span class="sid">US-LOGIC-01</span><span class="badge"></span><span class="txt">As a user, I want LifeOS to automatically calculate my progress.</span></span></label>
+<label class="story" data-id="US-LOGIC-02"><input type="checkbox"><span><span class="sid">US-LOGIC-02</span><span class="badge"></span><span class="txt">As a user, I want LifeOS to identify overdue tasks automatically.</span></span></label>
+<label class="story" data-id="US-LOGIC-03"><input type="checkbox"><span><span class="sid">US-LOGIC-03</span><span class="badge"></span><span class="txt">As a user, I want LifeOS to calculate my habit streak automatically.</span></span></label>
+</section>
+
+<section class="group" data-group="Validation">
+<h2>5.21 Data Validation <span class="group-count"></span></h2>
+<label class="story" data-id="US-VALID-01"><input type="checkbox"><span><span class="sid">US-VALID-01</span><span class="badge"></span><span class="txt">As a user, I want the system to tell me when information I entered is invalid so that I can correct it.</span></span></label>
+</section>
+
+<section class="group" data-group="Security">
+<h2>5.22 Security <span class="group-count"></span></h2>
+<label class="story" data-id="US-SEC-01"><input type="checkbox"><span><span class="sid">US-SEC-01</span><span class="badge"></span><span class="txt">As a user, I want my personal information protected from unauthorized access.</span></span></label>
+<label class="story" data-id="US-SEC-02"><input type="checkbox"><span><span class="sid">US-SEC-02</span><span class="badge"></span><span class="txt">As a user, I want my password stored securely.</span></span></label>
+<label class="story" data-id="US-SEC-03"><input type="checkbox"><span><span class="sid">US-SEC-03</span><span class="badge"></span><span class="txt">As a user, I want only authorized requests to modify my data.</span></span></label>
+</section>
+
+<section class="group" data-group="Error">
+<h2>5.23 Error Handling <span class="group-count"></span></h2>
+<label class="story" data-id="US-ERROR-01"><input type="checkbox"><span><span class="sid">US-ERROR-01</span><span class="badge"></span><span class="txt">As a user, I want understandable error messages when something goes wrong.</span></span></label>
+</section>
+
+<section class="group" data-group="Logging">
+<h2>5.24 Logging <span class="group-count"></span></h2>
+<label class="story" data-id="US-LOG-01"><input type="checkbox"><span><span class="sid">US-LOG-01</span><span class="badge"></span><span class="txt">As an administrator, I want application errors logged so that problems can be diagnosed.</span></span></label>
+</section>
+
+<section class="group" data-group="Performance">
+<h2>5.25 Caching &amp; Performance <span class="group-count"></span></h2>
+<label class="story" data-id="US-PERF-01"><input type="checkbox"><span><span class="sid">US-PERF-01</span><span class="badge"></span><span class="txt">As a user, I want LifeOS to respond quickly when I navigate through my information.</span></span></label>
+</section>
+
+<section class="group" data-group="Backup">
+<h2>5.26 Backup &amp; Recovery <span class="group-count"></span></h2>
+<label class="story" data-id="US-BACKUP-01"><input type="checkbox"><span><span class="sid">US-BACKUP-01</span><span class="badge"></span><span class="txt">As a user, I want my personal data protected against accidental loss.</span></span></label>
+</section>
+
+<section class="group" data-group="UI">
+<h2>5.27 Responsive Design <span class="group-count"></span></h2>
+<label class="story" data-id="US-UI-01"><input type="checkbox"><span><span class="sid">US-UI-01</span><span class="badge"></span><span class="txt">As a user, I want to use LifeOS from my phone without needing a separate mobile application.</span></span></label>
+</section>
+
+</main>
+<footer>Only stories marked <code>- done</code> in <code>LifeOS_SRS.md</code> start checked. Your clicks are saved in this browser (localStorage).</footer>
+<script>
+const KEY='lifeos_user_stories_v1';
+const DEFAULT_DONE=["US-AUTH-01","US-AUTH-02","US-AUTH-03","US-AUTH-04","US-AUTH-05","US-AUTH-06","US-AUTH-07","US-AUTHZ-01","US-AUTHZ-02","US-DASH-01"];
+let saved={};
+try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){saved={}}
+let currentFilter='all';
+const stories=[...document.querySelectorAll('.story')];
+function getChecked(el){
+ const id=el.dataset.id;
+ if(id in saved) return !!saved[id];
+ return DEFAULT_DONE.includes(id);
+}
+function refresh(save=true){
+ let done=0;
+ stories.forEach(el=>{
+  const cb=el.querySelector('input');
+  const isDone=cb.checked;
+  if(isDone) done++;
+  el.classList.toggle('done',isDone);
+  const b=el.querySelector('.badge');
+  b.textContent=isDone?'✅ done':'to-do';
+  b.className='badge '+(isDone?'yes':'no');
+  if(save){
+   const id=el.dataset.id;
+   saved[id]=isDone;
+  }
+ });
+ if(save) localStorage.setItem(KEY,JSON.stringify(saved));
+ const total=stories.length;
+ const pct=Math.round(done/total*100);
+ document.getElementById('progressBar').style.width=pct+'%';
+ document.getElementById('progressText').textContent=`${done} / ${total} done (${pct}%)`;
+ document.querySelectorAll('section.group').forEach(sec=>{
+  const items=[...sec.querySelectorAll('.story')];
+  const d=items.filter(i=>i.querySelector('input').checked).length;
+  sec.querySelector('.group-count').textContent=`${d}/${items.length} done`;
+ });
+ applyFilterSearch();
+}
+function applyFilterSearch(){
+ const q=document.getElementById('search').value.toLowerCase().trim();
+ stories.forEach(el=>{
+  const isDone=el.querySelector('input').checked;
+  const text=(el.dataset.id+' '+el.querySelector('.txt').textContent).toLowerCase();
+  const matchFilter=currentFilter==='all'||(currentFilter==='done'?isDone:!isDone);
+  const matchSearch=!q||text.includes(q);
+  el.classList.toggle('hidden',!(matchFilter&&matchSearch));
+ });
+ document.querySelectorAll('section.group').forEach(sec=>{
+  const visible=[...sec.querySelectorAll('.story')].some(s=>!s.classList.contains('hidden'));
+  sec.style.display=visible?'':'none';
+ });
+}
+stories.forEach(el=>{
+ const cb=el.querySelector('input');
+ cb.checked=getChecked(el);
+ cb.addEventListener('change',()=>refresh(true));
+});
+document.getElementById('search').addEventListener('input',applyFilterSearch);
+document.querySelectorAll('[data-filter]').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter=btn.dataset.filter;
+  applyFilterSearch();
+ });
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{
+ if(!confirm('Reset to md defaults? This clears your browser saves.')) return;
+ saved={};
+ localStorage.removeItem(KEY);
+ stories.forEach(el=>{
+  el.querySelector('input').checked=DEFAULT_DONE.includes(el.dataset.id);
+ });
+ refresh(true);
+});
+refresh(false);
+</script>
+</body>
+</html>
